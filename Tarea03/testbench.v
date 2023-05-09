@@ -1,0 +1,41 @@
+/* Universidad de Costa Rica
+   Escuela de Ingeniería Eléctrica | Circuitos Digitales II - IE0523
+   Profesor: Enrique Coen | Asistente: Ana Eugenia Sánchez
+   Estudiante: Andrés Chaves Vargas | Carné: B92198 
+*/
+
+`include "tester.v"
+`include "Cajero.v"
+
+
+module Cajero_Tb;
+
+wire wCLK, wRESET;
+wire wDIGITO_STB, wTIPO_TRANS, wMONTO_STB;
+wire [4:0] wDIGITO; 
+wire [15:0] wPIN;
+wire [31:0] wMONTO;
+wire wBALANCE_ACTUALIZADO, wENTREGAR_DINERO;
+wire wFONDOS_INSUFICIENTES, wPIN_INCORRECTO; 
+wire wADVERTENCIA, wBLOQUEO, wTARJETA_RECIBIDA;
+
+initial begin
+	$dumpfile("Cajero.vcd");
+	$dumpvars(-1, U0);
+	$monitor ("BALANCE ACTUALIZADO=%d, ENTREGAR DINERO=%d, FONDOS INSUFICIENTES=%d, PIN INCORRECTO=%d", wBALANCE_ACTUALIZADO, wENTREGAR_DINERO,
+                                                                                                        wFONDOS_INSUFICIENTES, wPIN_INCORRECTO);
+end
+
+Cajero U0 (.CLK(wCLK), .RESET(wRESET),
+           .DIGITO_STB(wDIGITO_STB), .TIPO_TRANS(wTIPO_TRANS), .MONTO_STB(wMONTO_STB),
+           .DIGITO(wDIGITO),.PIN(wPIN), .MONTO(wMONTO), .TARJETA_RECIBIDA(wTARJETA_RECIBIDA), .BALANCE_ACTUALIZADO(wBALANCE_ACTUALIZADO), 
+           .ENTREGAR_DINERO(wENTREGAR_DINERO), .FONDOS_INSUFICIENTES(wFONDOS_INSUFICIENTES), .PIN_INCORRECTO(wPIN_INCORRECTO), 
+           .ADVERTENCIA(wADVERTENCIA), .BLOQUEO(wBLOQUEO));
+
+Cajero_Tester P0 (.CLK(wCLK), .RESET(wRESET),
+           .DIGITO_STB(wDIGITO_STB), .TIPO_TRANS(wTIPO_TRANS), .MONTO_STB(wMONTO_STB),
+           .DIGITO(wDIGITO),.PIN(wPIN), .MONTO(wMONTO),.TARJETA_RECIBIDA(wTARJETA_RECIBIDA), .BALANCE_ACTUALIZADO(wBALANCE_ACTUALIZADO), 
+           .ENTREGAR_DINERO(wENTREGAR_DINERO), .FONDOS_INSUFICIENTES(wFONDOS_INSUFICIENTES), .PIN_INCORRECTO(wPIN_INCORRECTO), 
+           .ADVERTENCIA(wADVERTENCIA), .BLOQUEO(wBLOQUEO));
+
+endmodule
