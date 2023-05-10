@@ -27,8 +27,10 @@ initial begin
 CLK = 1; RESET = 1; DIGITO = 0; DIGITO = 2; TIPO_TRANS = 0;
 MONTO_STB = 0; BALANCE = 64'h1000000; CONTADOR = 0; TARJETA_RECIBIDA = 1;
 PIN = 16'h2198; PIN_COMP = 0; MONTO = 0; 
-/*
-//Prueba 1: Proceso Normal de Funcionamiento. Acción: Depósito:
+
+
+
+//Prueba 1: Proceso Normal de Funcionamiento. Acción: Depósito.
 #5 RESET = 0;
 #5 TARJETA_RECIBIDA = 1; //Se pasa al estado: Esperando primer dígito.
    
@@ -51,9 +53,11 @@ PIN = 16'h2198; PIN_COMP = 0; MONTO = 0;
    MONTO_STB = 1;
    BALANCE = 64'h1000000;
    TIPO_TRANS = 0; //Se pasa al estado: Depósito.
-*/
 
-//Prueba 2: Proceso Normal de Funcionamiento. Acción: Retiro (Fondos Suficientes):
+
+
+/*
+//Prueba 2: Proceso Normal de Funcionamiento. Acción: Retiro (Fondos Suficientes).
 #9  DIGITO = 2;  
 #5 RESET = 0;
    TARJETA_RECIBIDA = 1; //Se pasa al estado: Esperando primer dígito.
@@ -62,6 +66,7 @@ PIN = 16'h2198; PIN_COMP = 0; MONTO = 0;
 #1 DIGITO_STB = 0;
  
 #5   DIGITO = 1;
+TARJETA_RECIBIDA = 0;
 #5   DIGITO_STB = 1; //Se pasa al estado: Esperando tercer dígito.
 #2 DIGITO_STB = 0;
 
@@ -77,7 +82,9 @@ PIN = 16'h2198; PIN_COMP = 0; MONTO = 0;
    MONTO_STB = 1;
    
    TIPO_TRANS = 1; //Se pasa al estado: Retiro.
-/* 
+
+
+
 //Prueba 3: Proceso Normal de Funcionamiento. Acción: Retiro (Fondos Insuficientes):
 #9  DIGITO = 2;  
 #5 RESET = 0;
@@ -87,6 +94,7 @@ PIN = 16'h2198; PIN_COMP = 0; MONTO = 0;
 #1 DIGITO_STB = 0;
  
 #5   DIGITO = 1;
+TARJETA_RECIBIDA = 0;
 #5   DIGITO_STB = 1; //Se pasa al estado: Esperando tercer dígito.
 #2 DIGITO_STB = 0;
 
@@ -102,6 +110,8 @@ PIN = 16'h2198; PIN_COMP = 0; MONTO = 0;
    MONTO_STB = 1;
    
    TIPO_TRANS = 1; //Se pasa al estado: Retiro.
+
+
 
 //Prueba 4: Proceso Pin Incorrecto: Bloqueo:
 
