@@ -18,6 +18,7 @@ wire wMISO, wMOSI, wSCK, wCS;
 initial begin
 	$dumpfile("SPI.vcd");
 	$dumpvars(-1, U0);
+   $dumpvars(-1, U1);
 	//$monitor ("BALANCE ACTUALIZADO=%d, ENTREGAR DINERO=%d, FONDOS INSUFICIENTES=%d, PIN INCORRECTO=%d", wBALANCE_ACTUALIZADO, wENTREGAR_DINERO);
 end
 
