@@ -17,26 +17,28 @@ initial begin
 //Valores Iniciales de la Simulación:
 
 CLK = 1; RESET = 0; CKP = 0; CPH = 0;
-//Prueba 1: CKP = CPH = 0
-#20 RESET = 1;
+//Prueba 1: CKP = 0 CPH = 0
     CKP = 1;
-    CPH = 0;
-/*
-//Prueba 1: CKP = 0 CPH = 1
-#1200 RESET = 0;
+    CPH = 1;
 #20 RESET = 1;
+    
+/*
+//Prueba 2: CKP = 0 CPH = 1
+#1200 RESET = 0;
     CKP = 0;
     CPH = 1;
-//Prueba 1: CKP = 1 CPH = 0
-#1200 RESET = 0;
 #20 RESET = 1;
+    
+//Prueba 3: CKP = 1 CPH = 0
+#1200 RESET = 0;
     CKP = 1;
     CPH = 0;
+#20 RESET = 1;
 //Prueba 4: CKP = 1 CPH = 1
 #1200 RESET = 0;
-#20 RESET = 1;
     CKP = 1;
     CPH = 1;
+#20 RESET = 1;
 */
 #8000 $finish;
 end 
